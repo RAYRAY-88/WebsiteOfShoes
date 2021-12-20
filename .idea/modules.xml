@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/FCU_SHOP.iml" filepath="$PROJECT_DIR$/.idea/FCU_SHOP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sep-fcushop-master/fcushop.iml" filepath="$PROJECT_DIR$/sep-fcushop-master/fcushop.iml" />
+    </modules>
+  </component>
+</project>
