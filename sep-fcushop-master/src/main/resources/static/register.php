@@ -12,8 +12,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
         if(mysqli_query($conn, $sql)){
             echo "註冊成功!3秒後將自動跳轉頁面<br>";
-            echo "<a href='index.php'>未成功跳轉頁面請點擊此</a>";
-            header("refresh:32;url=index.php");
+            echo "<a href='index2.php'>未成功跳轉頁面請點擊此</a>";
+            header("refresh:32;url=index2.php");
             exit;
         }else{
             echo "Error creating table: " . mysqli_error($conn);
@@ -35,7 +35,7 @@ function function_alert($message) {
 
     // Display the alert box
     echo "<script>alert('$message');
-     window.location.href='index.php';
+     window.location.href='index2.php';
     </script>";
 
     return false;
