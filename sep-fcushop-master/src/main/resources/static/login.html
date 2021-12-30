@@ -69,12 +69,12 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
             </div>
         </nav>
         <div class="container">
-            <h1 class="mt-3">Lon in</h1>
-            <h3>你可以選擇登入或是註冊帳號~</h3>
+            <font color="blue"><h1 class="mt-3">Lon in</h1></font>
+            <font color="4A4AFF"><h3>你可以選擇登入或是註冊帳號~</h3><br/><br/></font>
             <form method="post" action="login.php">
-                帳號：
-                <input type="text" name="username"><br/><br/>
-                密碼：
+                帳號UserName：
+                <input type="text" name="username" placeholder="用戶名"><br/><br/>
+                密碼 Password ：
                 <input type="password" name="password"><br><br>
                 <input type="submit" value="登入" name="submit"><br><br>
                 <a href="register.html">還沒有帳號？現在就註冊！</a>
