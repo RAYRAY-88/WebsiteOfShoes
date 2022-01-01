@@ -11,7 +11,7 @@ import java.util.List;
 public class AccountLogin {
 
   @Autowired
-  Sql2oDbHandler sql = new Sql2oDbHandler();
+  private Sql2oDbHandler sql;
   public AccountLogin(){}
 
   public boolean find_account (String username, String password){

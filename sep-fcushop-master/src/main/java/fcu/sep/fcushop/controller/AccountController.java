@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 @RestController
 public class AccountController {
   @Autowired
-  AccountRegister accountRegister = new AccountRegister();
+  private AccountRegister accountRegister;
   @Autowired
-  AccountLogin accountLogin = new AccountLogin();
+  private AccountLogin accountLogin;
 
   @PostMapping("/register")
   @ResponseBody
