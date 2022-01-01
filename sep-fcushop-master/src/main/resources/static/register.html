@@ -6,16 +6,66 @@
               integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <script>
             function validateForm() {
-                var x = document.forms["registerForm"]["password"].value;
-                var y = document.forms["registerForm"]["password_check"].value;
-                if(x.length<6){
+                if(checkUsernameConfirm() || checkPasswordConfirm()){
+                    $('#username').val("");
+                    $('#password').val("");
+                    setTimeout(function(){
+                      history.go(0);
+                    },1000);
+                }
+                else{
+                    register();
+                }
+            }
+            function checkPasswordConfirm(){
+                  var password= document.forms["registerForm"]["password"].value
+                  var passwordConfirm= document.forms["registerForm"]["password_check"].value
+                  if(password==""){
+                    alert("請先輸入密碼");
+                    return true;
+                  }
+                  if(passwordConfirm==""){
+                    alert("請再次輸入密碼");
+                    return true;
+                  }
+                  if(passwordConfirm!=password){
+                  alert("兩次輸入的密碼不一致");
+                    return true;
+                  }
+                  if(password.length < 6){
                     alert("密碼長度不足");
-                    return false;
+                    return true;
                 }
-                if (x != y) {
-                    alert("請確認密碼是否輸入正確");
-                    return false;
+            }
+            function checkUsernameConfirm(){
+                var username=document.forms["registerForm"]["username"].value
+                if(username==""){
+                  alert("請先輸入帳號");
+                  return true;
                 }
+            }
+            function register(){
+                $.ajax({
+                    // The URL for the request
+                  url: "/register",
+
+                  // Whether this is a POST or GET request
+                  type: "POST",
+
+                  data : {username:$('#username').val(),password:$('#password').val()} ,
+
+                  dataType : "json",
+
+                  success: function (result) {
+                    if (result == 1) {
+                        alert("註冊成功");
+                        history.go(0);
+                    } else if(result == 0){
+                        alert("此帳號已存在");
+                        history.go(0);
+                    }
+                  },
+                });
             }
         </script>
     </head>
@@ -72,21 +122,22 @@
                 </div>
             </div>
         </nav>
-    <br><br><br><br><br><br>
+        <br><br><br><br><br><br>
         <div class="container" style="text-align:center; background:rgba(240,240,240,0.95);width:400px;height:330px">
             <font color="#272727" size="7">註冊</font>
             <font color="#272727" size="6">Register</font>
             <br><br>
             <form name="registerForm" method="post" onsubmit="return validateForm()">
                 帳  號UserName：
-                <input type="text" name="username" placeholder="用戶名"><br/><br/>
+                <input id="username" type="text" name="username" placeholder="用戶名"><br/><br/>
                 密  碼 Password ：
-                <input type="password" name="password" id="password"><br/><br/>
+                <input id="password" type="password" name="password"><br/><br/>
                 確 認 密 碼 ：
-                <input type="password" name="password_check" id="password_check"><br/><br/>
-                <input type="submit" value="註冊" name="submit">
+                <input id="password_check" type="password" name="password_check"><br/><br/>
+                <input id="register" type="submit" value="註冊" name="submit">
                 <input type="reset" value="重設" name="submit">
             </form>
         </div>
+
     </body>
 </html>
