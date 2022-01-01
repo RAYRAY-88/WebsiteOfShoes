@@ -15,11 +15,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
               integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <title>ShoesShop登入介面</title>
     </head>
-    <body background="http://i.imgur.com/1G4Swga.png" style="background-size:102px 136px">
-    <!--'https://.pngtree.com/so/鞋子矢量可編輯源文件設置圖元素'>鞋子矢量可編輯源文件設置圖元素 png來自 .pngtree.com/-->
+    <body background="http://i.imgur.com/lqZVaoW.png" style="background-position:center;background-size:cover;background-repeat:no-repeat">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">Shoes Shop</a>
+                <a class="navbar-brand" href="index.html">Shoe Shop</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -69,19 +68,19 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                 </div>
             </div>
         </nav>
-        <div class="container" style="background:#D2E9FF">
-            <font color="blue"><h1 class="mt-3">Lon in</h1></font>
-            <font color="4A4AFF"><h3>你可以選擇登入或是註冊帳號~</h3><br/><br/></font>
+        <br><br><br><br><br><br>
+        <div class="container" style="text-align:center; background:rgba(240,240,240,0.95);width:400px;height:330px">
+            <font color="#272727" size="7">登入</font>
+            <font color="#272727" size="6">Log in</font>
+            <br><br>
             <form method="post">
                 帳號UserName：
                 <input type="text" name="username" placeholder="用戶名"><br/><br/>
                 密碼 Password ：
                 <input type="password" name="password"><br><br>
-                <input type="submit" value="登入" name="submit"><br><br>
+                <input type="submit" value="登入" name="submit"><br><br><br>
                 <a href="register.html">還沒有帳號？現在就註冊！</a>
             </form>
-            </div>
         </div>
-
     </body>
 </html>
