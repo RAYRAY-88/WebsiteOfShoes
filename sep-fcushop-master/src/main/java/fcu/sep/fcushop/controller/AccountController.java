@@ -12,7 +12,7 @@ public class AccountController {
   @Autowired
   private AccountLogin accountLogin;
 
-  @GetMapping("/register")
+  @PostMapping (path = "/register")
   @ResponseBody
   public int register(@RequestParam("username")String username, @RequestParam("password")String password){
     int check = 1;
@@ -25,7 +25,7 @@ public class AccountController {
     return check;
   }
 
-  @GetMapping("/login")
+  @PostMapping (path = "/login")
   @ResponseBody
   public int login(@RequestParam("username")String username, @RequestParam("password")String password){
     int check = 0;

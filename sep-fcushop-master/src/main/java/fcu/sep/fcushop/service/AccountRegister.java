@@ -31,8 +31,7 @@ public class AccountRegister {
 
   public void insertAccount( String Username , String Password){
     String insertQuery =
-        "INSERT INTO Account (username , userpassword) "
-            + "VALUES (:Username , :Password)";
+        "INSERT INTO user (username , userpassword) VALUES (:Username , :Password)";
     try (Connection con = sql.getConnector().open()) {
       con.createQuery(insertQuery)
           .addParameter("username",Username )//account.getUName()
