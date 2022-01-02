@@ -12,26 +12,26 @@ public class AccountController {
   @Autowired
   private AccountLogin accountLogin;
 
-  @PostMapping("/register")
+  @GetMapping("/register")
   @ResponseBody
   public int register(@RequestParam("username")String username, @RequestParam("password")String password){
-    int result = 1;
+    int check = 1;
     if (accountRegister.find_same_username(username)){
-      result = 0 ;
+      check = 0 ;
     }
     else {
       accountRegister.insertAccount(username,password);
     }
-    return result;
+    return check;
   }
 
-  @PostMapping("/login")
+  @GetMapping("/login")
   @ResponseBody
   public int login(@RequestParam("username")String username, @RequestParam("password")String password){
-    int result = 0;
+    int check = 0;
     if (accountLogin.find_account(username,password)){
-      result = 1 ;
+      check = 1 ;
     }
-    return result;
+    return check;
   }
 }

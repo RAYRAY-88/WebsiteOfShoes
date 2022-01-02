@@ -4,12 +4,12 @@ public class Account {
 
   private int user_id = 1 ;
   private String username;
-  private String userpassword;
+  private String password;
 
-  public Account(int user_id, String username, String userpassword) {
+  public Account(int user_id, String username, String password) {
     this.user_id = user_id;
     this.username = username;
-    this.userpassword = userpassword;
+    this.password = password;
   }
 
   public Account(){
@@ -29,7 +29,7 @@ public class Account {
     this.username = name;
   }
 
-  public String getPassword() {return userpassword;}
-  public void setPassword(String password) {this.userpassword = password;}
+  public String getPassword() {return password;}
+  public void setPassword(String password) {this.password = password;}
 
 }

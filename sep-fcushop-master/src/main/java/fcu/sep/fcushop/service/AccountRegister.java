@@ -15,30 +15,28 @@ public class AccountRegister {
   public AccountRegister() {
 
   }
-  public boolean find_same_username (String username){
+  public boolean find_same_username (String Username){
     String query = "select user_id , username  , userpassword"
-        + " from user where username = :username";
-    List<Account> accounts ;
+        + " from user where username = :Username";
+    List<Account> account ;
 
     try (Connection con = sql.getConnector().open()) {
-      accounts = con.createQuery(query)
-          .addParameter("username", username)
+      account = con.createQuery(query)
+          .addParameter("username", Username)
           .executeAndFetch(Account.class);
-      if(accounts!= null & accounts.size()>0 ){
-        return true;
-      }
+      if(account!= null & account.size()>0 )return true;
       else return false;
     }
   }
 
-  public void insertAccount( String username, String password){
+  public void insertAccount( String Username , String Password){
     String insertQuery =
-        "INSERT INTO account ( username, userpassword) "
-            + "VALUES (:username, :password)";
+        "INSERT INTO Account (username , userpassword) "
+            + "VALUES (:Username , :Password)";
     try (Connection con = sql.getConnector().open()) {
       con.createQuery(insertQuery)
-          .addParameter("username",username )//account.getUName()
-          .addParameter("userpassword",password) //account.getPassword()
+          .addParameter("username",Username )//account.getUName()
+          .addParameter("password",Password) //account.getPassword()
           .executeUpdate();
     }
   }

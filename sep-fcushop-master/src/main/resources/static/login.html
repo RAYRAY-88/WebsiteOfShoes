@@ -73,7 +73,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
             <font color="#272727" size="7">登入</font>
             <font color="#272727" size="6">Log in</font>
             <br><br>
-            <form method="post">
+            <form name="login_form" method="post" onsubmit="return LoginForm()">
                 帳號UserName：
                 <input id="username" type="text" name="username" placeholder="用戶名"><br/><br/>
                 密碼 Password ：
@@ -85,57 +85,47 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         </div>
 
         <script>
-            $('login').click(function(){
-                var username =$('#username').val() ;
-                var password =$('#password').val() ;
-
+            function LoginForm(){
+                var username =document.forms["login_Form"]["username"].value;
+                var password =document.forms["login_Form"]["password"].value;
+                alert(username)
+                alert(password)
               if(username==""){
                 alert("登入失敗，帳號不能為空");
                 setTimeout(function(){
                   history.go(0);
                 },1000);
-                s.innerHTML="登入失敗，帳號不能為空";
-                s.style.color = "red";
               }
               else if(password == ""){
                 alert("登入失敗，密碼不能為空");
                 setTimeout(function(){
                   history.go(0);
                 },1000);
-                s.innerHTML="登入失敗，密碼不能為空";
-                s.style.color = "red";
               }
               else{
                 login();
               }
-            });
-
-            /*$("body").keydown(function() {
-                if (event.keyCode == "13") {// keyCode=13是回車鍵
-                    $('#button_login').click();
-                }
-            });*/
-        function login(){
+            }
+            function login(){
+                var user = document.forms["login_Form"]["username"].value;
+                var pass = document.forms["login_Form"]["password"].value;
                 $.ajax({
                     // The URL for the request
-                  url: "/login",
+                  url: "login",
 
                   // Whether this is a POST or GET request
-                  type: "POST",
+                  type: "GET",
 
-                  data : {username:$('#username').val(),password:$('#password').val()} ,
+                  data : {username:user,password:pass} ,
 
                   dataType : "json",
-
+                    alert("登入成功");
                   success: function (result) {
-                    var s=document.getElementById("login_next_td");
-                    if (result == 1) {
+                    if (check == 1) {
                         alert("登入成功");
                         history.go(0);
-                    } else if(result == 0){
+                    } else if(check == 0){
                         alert("登入失敗，請確認帳號密碼是否有誤");
-                        s.innerHTML="登入失敗，請確認帳號密碼是否有誤";
-                        s.style.color = "red";
                         history.go(0);
                     }
                   },
