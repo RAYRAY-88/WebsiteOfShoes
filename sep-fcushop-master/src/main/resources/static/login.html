@@ -111,7 +111,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                 var pass = document.forms["login_Form"]["password"].value;
                 $.ajax({
                     // The URL for the request
-                  url: "login",
+                  url: "/login",
 
                   // Whether this is a POST or GET request
                   type: "GET",
