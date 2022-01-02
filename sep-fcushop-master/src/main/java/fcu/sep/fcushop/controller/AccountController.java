@@ -12,21 +12,26 @@ public class AccountController {
   @Autowired
   private AccountLogin accountLogin;
 
-  @PostMapping("register")
+  @GetMapping("/register")
   @ResponseBody
-  public int register(@RequestParam("usernameC")String usernameB , @RequestParam("passwordC")String passwordB){
+  public int register(@RequestParam("username")String username, @RequestParam("password")String password){
     int check = 1;
-    System.out.println("asdasdasdsadsaasdasdasdasdasda");
-    if (accountRegister.find_same_username(usernameB)) check = 0;
-    else accountRegister.insertAccount(usernameB , passwordB);
+    if (accountRegister.find_same_username(username)){
+      check = 0 ;
+    }
+    else {
+      accountRegister.insertAccount(username,password);
+    }
     return check;
   }
 
-  @PostMapping("/login")
+  @GetMapping("/login")
   @ResponseBody
-  public int login(@RequestParam("username")String username , @RequestParam("password")String password){
+  public int login(@RequestParam("username")String username, @RequestParam("password")String password){
     int check = 0;
-    if (accountLogin.find_account(username , password)) check = 1 ;
+    if (accountLogin.find_account(username,password)){
+      check = 1 ;
+    }
     return check;
   }
 }

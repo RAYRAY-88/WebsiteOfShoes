@@ -76,7 +76,7 @@
         </div>
         <script>
             function validateForm() {
-                if(checkUsernameConfirm() || checkPasswordConfirm()){
+                if(check()){
                     $('#Username').val("");
                     $('#Password').val("");
                     setTimeout(function(){
@@ -87,9 +87,14 @@
                     register();
                 }
             }
-            function checkPasswordConfirm(){
-                  var password= document.forms["registerForm"]["Password"].value
-                  var passwordConfirm= document.forms["registerForm"]["password_check"].value
+            function check(){
+                  var username=document.forms["registerForm"]["Username"].value;
+                  var password= document.forms["registerForm"]["Password"].value;
+                  var passwordConfirm= document.forms["registerForm"]["password_check"].value;
+                  if(username==""){
+                    alert("請先輸入帳號");
+                    return true;
+                  }
                   if(password==""){
                     alert("請先輸入密碼");
                     return true;
@@ -107,22 +112,20 @@
                     return true;
                 }
             }
-            function checkUsernameConfirm(){
-                var username=document.forms["registerForm"]["Username"].value
-                if(username==""){
-                  alert("請先輸入帳號");
-                  return true;
-                }
-            }
             function register(){
-            var user = document.forms["registerForm"]["Username"].value
-            var pass = document.forms["registerForm"]["Password"].value
+            var user = document.forms["registerForm"]["Username"].value;
+            var pass = document.forms["registerForm"]["Password"].value;
 
                 $.ajax({
+
                   url: "register",
-                  type:"POST",
+
+                  type: "GET",
+
                   data : {username:user,password:pass} ,
+
                   dataType : "json",
+
                   success: function (check) {
                     if (check == 1) {
                         alert("註冊成功");
