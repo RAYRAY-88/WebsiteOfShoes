@@ -17,8 +17,8 @@ public class AccountLogin {
   }
 
   public boolean find_account (String username , String password){
-    String query = "SELECT user_id , username , userpassword"
-        + " FROM user WHERE username = :username AND userpassword = :password ";
+    String query = "SELECT user_id , username , password"
+        + " FROM user WHERE username = :username AND password = :password ";
     List<Account> account ;
 
     try (Connection con = sql.getConnector().open()) {

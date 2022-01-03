@@ -5,6 +5,7 @@ import fcu.sep.fcushop.service.AccountRegister;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
 @RestController
 public class AccountController {
   @Autowired
@@ -12,8 +13,7 @@ public class AccountController {
   @Autowired
   private AccountLogin accountLogin;
 
-  @PostMapping (path = "/register")
-  @ResponseBody
+  @PostMapping("/register")
   public int register(@RequestParam("username")String username, @RequestParam("password")String password){
     int check = 1;
     if (accountRegister.find_same_username(username)){
@@ -25,7 +25,7 @@ public class AccountController {
     return check;
   }
 
-  @PostMapping (path = "/login")
+  @PostMapping("/login")
   @ResponseBody
   public int login(@RequestParam("username")String username, @RequestParam("password")String password){
     int check = 0;
