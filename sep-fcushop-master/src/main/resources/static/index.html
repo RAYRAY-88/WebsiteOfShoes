@@ -55,7 +55,7 @@
               <a class="nav-link" href="#">會員中心</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">購物車(0)</a>
+              <a class="nav-link" href="shoppingcart.html">購物車(0)</a>
             </li>
           </ul>
 
@@ -121,6 +121,8 @@
             html += '<h5 class="card-title">' + product.name + '</h5>';
             html += '<p class="card-text">' + product.description + '</p>';
             html += '<a href="#" class="btn btn-primary">' + product.price + '</a>';
+            html += '<a>' + "    " + '</a>';
+            html += '<a href="#" class="btn btn-primary">' + "加入購物車" + '</a>';
             html += '</div>';
             html += '</div>';
             $('#productList').append(html);
