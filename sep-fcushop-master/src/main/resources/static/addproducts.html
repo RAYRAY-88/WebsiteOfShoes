@@ -15,7 +15,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">FCU Shop</a>
+        <a class="navbar-brand" href="index.html">Shoes Shop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,31 +25,21 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.html">首頁</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="#">台北總店</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">逢甲鞋店</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         商品管理
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="addproducts.html">新增商品</a></li>
+                        <li><a class="dropdown-item" href="broswer.html">瀏覽商品</a></li>
                         <li><a class="dropdown-item" href="#">修改商品</a></li>
                     </ul>
-                </li>
-            </ul>
-
-
-            <ul class="navbar-nav mb-2 mb-lg-0 d-flex">
-                <li class="nav-item">
-                    <a class="nav-link" href="login.html">登入</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="register.html">註冊</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">會員中心</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="shoppingcart.html">購物車</a>
                 </li>
             </ul>
 
@@ -71,10 +61,10 @@
                     </div>
                     <div class="card-body">
                         <form>
-                            <table style="border-collapse: separate;/*border-spacing: 30px 20px;*/">
+                            <table style="border-collapse: separate">
                                 <tr>
                                     <td class="margin-top:10">
-                                        <label>商品名稱：</label>
+                                        <label style="color:red">商品名稱：</label>
                                     </td>
                                     <td>
                                         <input type="text" name="NAME"  id="NAME" class="form-control" placeholder="請輸入商品名稱">
@@ -105,12 +95,9 @@
                                         <input type="range" id="PRICE" name="PRICE"  value="1" min="0" max="9999" placeholder="請輸入商品價格" oninput="this.nextElementSibling.value = this.value">
                                         <output>0</output>
                                     </td>
-
                                 </tr>
                                 <tr id="price_next_tr">
-
                                 </tr>
-
                                 <tr>
                                     <td>
                                         <label>商品描述:</label>
@@ -118,30 +105,19 @@
                                     <td>
                                         <input type="text" id= "DESCRIPTION" name = "DESCRIPTION" class="form-control" placeholder="請輸入商品描述" >
                                     </td>
-
                                 </tr>
                                 <tr id="description_next_tr">
-
                                 </tr>
                             </table>
-
                         </form>
-
                         <div class="footer">
                             <button type="button" class="btn btn-primary" id= "button_addproducts" style="width:120px;height:40px;border:3px orange double;" >送出</button>
-
-
-
                         </div>
-
-
                     </div>
                 </div>
             </form>
         </div>
-
     </li>
-
 </ul>
 <!-- Optional JavaScript; choose one of the two! -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -152,16 +128,9 @@
         crossorigin="anonymous"></script>
 <!-- Option 1: Bootsdfsdfsdfstrap Bundle with Popper -->
 <script>
-
-
     $('#button_addproducts').click(function(){
-
-
         addProducts();
-
     });
-
-
       function addProducts(){
         $.ajax({
             // The URL for the request
@@ -176,14 +145,11 @@
 
           success: function (result) {
             if(result==1){
-
                 alert("新增成功");
                 $('#NAME').val("");
                 $('#IMAGE_URL').val("");
                 $('#PRICE').val("");
                 $('#DESCRIPTION').val("");
-
-
             }
             else{
                 alert("新增失敗");
@@ -195,9 +161,6 @@
           },
         });
       }
-
-
-
   </script>
 </body>
 </html>
