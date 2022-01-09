@@ -13,7 +13,7 @@ import java.util.List;
 public class AccountRegister {
 
   @Autowired
-  Sql2oDbHandler sql;
+  private Sql2oDbHandler sql;
   public AccountRegister() {
 
   }

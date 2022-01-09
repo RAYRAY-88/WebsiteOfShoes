@@ -11,7 +11,7 @@ import java.util.List;
 public class AccountLogin {
 
   @Autowired
-  Sql2oDbHandler sql;
+  private Sql2oDbHandler sql;
   public AccountLogin(){
 
   }
