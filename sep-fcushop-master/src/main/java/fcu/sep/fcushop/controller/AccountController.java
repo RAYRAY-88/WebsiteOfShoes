@@ -20,14 +20,12 @@ public class AccountController {
   @ResponseBody
   public int register(@RequestParam("username")String username, @RequestParam("password")String password){
   int result = 1;
-  System.out.println(username + "+" + password);
     if (accountRegister.find_same_username(username)){
       result = 0 ;
     }
     else {
       accountRegister.insertAccount(username , password);
     }
-    System.out.println(result);
     return result;
   }
 

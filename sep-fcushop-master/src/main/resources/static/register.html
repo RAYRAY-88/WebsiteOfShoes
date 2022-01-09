@@ -133,6 +133,7 @@
                   success : function (result){
                     if (result == 1) {
                         alert("註冊成功");
+                        history.go(0);
                     }
                     else if(result==0){
                         alert("此帳號已存在");
@@ -146,8 +147,7 @@
                 .always(function( xhr, status ) {
                   console.log( "The request is complete!" );
                 });
-                setTimeout(,3000);
-              //alert();
+              alert();
             }
         </script>
 </body>
