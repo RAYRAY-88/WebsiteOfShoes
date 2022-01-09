@@ -34,3 +34,17 @@ body{
     margin-left: 100px;
     margin-top: 20px;
 }
+.gallery{
+    padding:50px
+}
+.phote{
+    float:left
+    width:20%;
+}
+.intro{
+    float:right;
+    width:74%;
+}
+.big{
+    font-size:28px;
+}
