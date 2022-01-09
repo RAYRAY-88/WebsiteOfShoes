@@ -88,6 +88,7 @@
                 <thead>
                 <tr>
                     <th>全選<input type="checkbox" onclick="check(this)"></th>
+                    <th>編號</th>
                     <th>名稱</th>
                     <th>圖片</th>
                     <th>價格</th>
@@ -100,10 +101,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <td colspan="6">總金額<span id="total">0</span> 元    總數量<span id="buy_num">0</span>件</td>
-
-                </tr>
-                <tr>
+                    <td colspan="6">總金額<span id="total">0</span> 元    總數量<span id="buy_num">0</span> 件</td>
                     <td><input type="button" class="btn btn-primary" id="clear_all" value="清空購物車"></td>
                 </tr>
                 </tfoot>
@@ -153,7 +151,7 @@
         let html = '<div class="card col-4">';
         html += '<img src="' + product.imageUrl + '" class="card-img-top" alt="' + product.name + '">';
         html += '<div class="card-body">';
-        html += '<h5 class="card-title"><span>' + product.name + '</span><br> 價格:  <span>' + product.price + '</span>元 </h5>';
+        html += '<h5 class="card-title"><span>' + product.id + '</span>.<span>' + product.name + '</span><br> 價格:  <span>' + product.price + '</span>元 </h5>';
         html += '</div>';
         html += '<input type="button"  class="btn btn-primary" value="加入購物車" onclick="add(this)" >';
         html += '</div>';
@@ -195,8 +193,8 @@
 <script>
  function calculate() {
   var tb_body = document.getElementById("tb");
-  var prices = tb_body.querySelectorAll("td:nth-child(4)"); //選取屬於其父元素的第N個子元素的每個<td>元素
-  var numbers = tb_body.querySelectorAll("td:nth-child(5)>input[type=text]");
+  var prices = tb_body.querySelectorAll("td:nth-child(5)"); //選取屬於其父元素的第N個子元素的每個<td>元素
+  var numbers = tb_body.querySelectorAll("td:nth-child(6)>input[type=text]");
   var checkboxes = tb_body.querySelectorAll("th:nth-child(1)>input");
   //console.log(prices);
    //console.log(numbers);
@@ -261,13 +259,13 @@
  function add(me) {
      var tb_body = document.getElementById("tb");
      var div = me.parentNode;
-     var spans = div.getElementsByTagName("span"); // 獲得商品名字和價格的span
-     var name = spans[0].innerText; // 獲得商品名字
+     var spans = div.getElementsByTagName("span"); // 獲得商品id、名稱、價格的span
+     var id = spans[0].innerText; // 獲得商品名字
 
      var col_1 = tb_body.querySelectorAll("td:nth-child(2)"); // nth-child 作為第幾個孩子
      var found = null; // found 變數代表購物車中找到的td
      for(var i = 0; i<col_1.length; i++) {
-         if( col_1[i].innerText == name) {
+         if( col_1[i].innerText == id) {
            found = col_1[i];
            break;
          }
@@ -276,7 +274,7 @@
  if(found != null) { //商品名字存在
       // 修改數量 found 是找到的td
      var tr = found.parentNode;
-     var input = tr.querySelector("td:nth-child(5)>input:last-child");
+     var input = tr.querySelector("td:nth-child(6)>input:last-child");
      console.log(input);
      add_number(input);
  } else { //商品名字不存在
@@ -285,8 +283,10 @@
         var th = document.createElement("th");
         th.innerHTML = '<input type="checkbox" checked onclick="calculate()">';
 
+        var id1 = document.createElement("td");
+        id1.innerText = spans[0].innerText;
         var td1 = document.createElement("td");
-        td1.innerText = spans[0].innerText;
+        td1.innerText = spans[1].innerText;
 
         var td2 = document.createElement("td");
         var img = document.createElement("img");
@@ -295,7 +295,7 @@
         td2.appendChild(img);
 
         var td3 = document.createElement("td");
-        td3.innerText = spans[1].innerText;
+        td3.innerText = spans[2].innerText;
 
         var td4 = document.createElement("td");
         td4.innerHTML = '<input type="button" class="btn btn-primary" value="-" onclick="minus_number(this)"><input type="text" value="1" readonly><input type="button" class="btn btn-primary" value="+" onclick="add_number(this)">';
@@ -304,6 +304,7 @@
         td5.innerHTML = '<input type="button" class="btn btn-primary" value="刪除" onclick="del(this)">';
 
         tr.appendChild(th);
+        tr.appendChild(id1);
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
