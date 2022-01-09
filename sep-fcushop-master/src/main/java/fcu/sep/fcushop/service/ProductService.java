@@ -38,4 +38,21 @@ public class ProductService {
     }
   }
 
+  public void addProducts( String NAME, String IMAGE_URL, int PRICE, String DESCRIPTION){
+    String insertQuery =
+        "INSERT INTO product (NAME , IMAGE_URL, PRICE , DESCRIPTION ) "
+
+            + "VALUES (:NAME, :IMAGE_URL, :PRICE, :DESCRIPTION)";
+    try (Connection con = sql2oDbHandler.getConnector().open()) {
+      con.createQuery(insertQuery)
+          .addParameter("NAME",NAME )//account.getUName()
+          .addParameter("IMAGE_URL",IMAGE_URL) //account.getPassword()
+          .addParameter("PRICE",PRICE )//account.getUName()
+          .addParameter("DESCRIPTION",DESCRIPTION) //account.getPassword()
+          .executeUpdate();
+    }
+
+  }
+
+
 }

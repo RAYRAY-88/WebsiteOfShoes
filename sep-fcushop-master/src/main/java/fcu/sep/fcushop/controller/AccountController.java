@@ -12,9 +12,9 @@ import java.util.List;
 @RestController
 public class AccountController {
   @Autowired
-  private AccountRegister accountRegister;
+  AccountRegister accountRegister;
   @Autowired
-  private AccountLogin accountLogin;
+  AccountLogin accountLogin;
 
   @PostMapping("/register")
   @ResponseBody
