@@ -90,7 +90,8 @@
                     $('#Password').val("");
                     setTimeout(function(){
                       history.go(0);
-                    },1000);
+                    },100);
+                    alert();//沒有加會噴錯，找了兩個禮拜的bug解決方法，只找到這種解法。
                 }
                 else{
                     //console.log( "register good" );
@@ -121,6 +122,7 @@
                     alert("密碼長度不足");
                     return true;
                   }
+                  return false;
             }
             function register(){
               var user = $('#Username').val();
@@ -133,11 +135,9 @@
                   success : function (result){
                     if (result == 1) {
                         alert("註冊成功");
-                        history.go(0);
                     }
                     else if(result==0){
                         alert("此帳號已存在");
-                        history.go(0);
                     }
                     else{
                       alert("Error");
@@ -147,7 +147,7 @@
                 .always(function( xhr, status ) {
                   console.log( "The request is complete!" );
                 });
-              alert("這個alert沒有加會噴錯");//沒有加會噴錯
+              alert();//沒有加會噴錯，找了兩個禮拜的bug解決方法，只找到這種解法。
             }
         </script>
 </body>

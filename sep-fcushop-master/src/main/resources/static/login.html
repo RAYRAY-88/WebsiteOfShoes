@@ -89,13 +89,15 @@
                 alert("登入失敗，帳號不能為空");
                 setTimeout(function(){
                   history.go(0);
-                },1000);
+                },100);
+                alert();//沒有加會噴錯，找了兩個禮拜的bug解決方法，只找到這種解法。
               }
               else if(password == ""){
                 alert("登入失敗，密碼不能為空");
                 setTimeout(function(){
                   history.go(0);
-                },1000);
+                },100);
+                alert();//沒有加會噴錯，找了兩個禮拜的bug解決方法，只找到這種解法。
               }
               else{
                 login();
@@ -125,7 +127,7 @@
                 .always(function( xhr, status ) {
                   console.log( "The request is complete!" );
                 });
-              alert("這個alert沒有加會噴錯");//沒有加會噴錯
+              alert();//沒有加會噴錯，找了兩個禮拜的bug解決方法，只找到這種解法。
               }
         </script>
 </body>
